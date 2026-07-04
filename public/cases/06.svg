@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <linearGradient id="g6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dfdacd"/>
+      <stop offset="1" stop-color="#f1eee7"/>
+    </linearGradient>
+    <filter id="n6">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" result="t"/>
+      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0.55 0"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g6)"/>
+  <path d="M 1059 450 L 1001 683 L 739 792 L 464 784 L 180 694 L 120 450 L 243 243 L 450 81 L 750 79 L 936 255 L 1061 450 Z" fill="none" stroke="#2a2824" stroke-width="2.5"/><path d="M 941 450 L 908 629 L 701 699 L 502 692 L 273 640 L 242 450 L 355 307 L 485 166 L 724 145 L 866 295 L 939 450 Z" fill="none" stroke="#2a2824" stroke-width="2.5"/><path d="M 822 450 L 839 589 L 666 612 L 544 589 L 377 579 L 358 450 L 471 375 L 523 261 L 681 252 L 760 357 L 817 450 Z" fill="none" stroke="#2a2824" stroke-width="2.5"/><path d="M 697 450 L 713 515 L 629 522 L 578 503 L 467 527 L 476 450 L 540 415 L 560 352 L 642 347 L 665 412 L 701 450 Z" fill="#2a2824" stroke="#2a2824" stroke-width="2.5"/>
+  <rect width="1200" height="900" filter="url(#n6)" opacity="0.16"/>
+</svg>

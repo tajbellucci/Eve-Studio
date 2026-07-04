@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9e5db"/>
+      <stop offset="1" stop-color="#d3cdbd"/>
+    </linearGradient>
+    <filter id="n1">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" result="t"/>
+      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0.55 0"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g1)"/>
+  <circle cx="578" cy="588" r="80"
+      fill="none" stroke="#2a2824" stroke-width="4.4"
+      stroke-dasharray="none"/><circle cx="578" cy="588" r="157"
+      fill="none" stroke="#2a2824" stroke-width="3.3"
+      stroke-dasharray="98 95"/><circle cx="578" cy="588" r="231"
+      fill="none" stroke="#2a2824" stroke-width="3.6"
+      stroke-dasharray="101 65"/><circle cx="578" cy="588" r="316"
+      fill="none" stroke="#2a2824" stroke-width="4.3"
+      stroke-dasharray="none"/><circle cx="578" cy="588" r="437"
+      fill="none" stroke="#2a2824" stroke-width="3.4"
+      stroke-dasharray="45 111"/><circle cx="578" cy="588" r="405"
+      fill="none" stroke="#2a2824" stroke-width="3.0"
+      stroke-dasharray="235 55"/><circle cx="578" cy="588" r="564"
+      fill="none" stroke="#2a2824" stroke-width="2.4"
+      stroke-dasharray="none"/><circle cx="578" cy="588" r="508"
+      fill="none" stroke="#2a2824" stroke-width="3.4"
+      stroke-dasharray="63 59"/><circle cx="578" cy="588" r="561"
+      fill="none" stroke="#2a2824" stroke-width="3.3"
+      stroke-dasharray="150 38"/><circle cx="578" cy="588" r="26" fill="#2a2824"/>
+  <rect width="1200" height="900" filter="url(#n1)" opacity="0.16"/>
+</svg>

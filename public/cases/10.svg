@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <linearGradient id="g10" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dfdacd"/>
+      <stop offset="1" stop-color="#f1eee7"/>
+    </linearGradient>
+    <filter id="n10">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" result="t"/>
+      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0.55 0"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g10)"/>
+  <line x1="719" y1="138" x2="719" y2="138" stroke="#3d3a34" stroke-width="3.2"/><line x1="599" y1="164" x2="838" y2="164" stroke="#3d3a34" stroke-width="1.6"/><line x1="554" y1="191" x2="883" y2="191" stroke="#3d3a34" stroke-width="3.2"/><line x1="523" y1="218" x2="915" y2="218" stroke="#3d3a34" stroke-width="2.2"/><line x1="499" y1="244" x2="939" y2="244" stroke="#3d3a34" stroke-width="1.8"/><line x1="480" y1="271" x2="957" y2="271" stroke="#3d3a34" stroke-width="2.3"/><line x1="466" y1="298" x2="972" y2="298" stroke="#3d3a34" stroke-width="1.9"/><line x1="455" y1="324" x2="983" y2="324" stroke="#3d3a34" stroke-width="2.1"/><line x1="447" y1="351" x2="991" y2="351" stroke="#3d3a34" stroke-width="1.9"/><line x1="442" y1="378" x2="996" y2="378" stroke="#3d3a34" stroke-width="3.5"/><line x1="439" y1="404" x2="998" y2="404" stroke="#3d3a34" stroke-width="2.6"/><line x1="439" y1="431" x2="998" y2="431" stroke="#3d3a34" stroke-width="1.6"/><line x1="442" y1="458" x2="996" y2="458" stroke="#3d3a34" stroke-width="1.7"/><line x1="447" y1="484" x2="991" y2="484" stroke="#3d3a34" stroke-width="1.5"/><line x1="455" y1="511" x2="983" y2="511" stroke="#3d3a34" stroke-width="1.7"/><line x1="466" y1="538" x2="972" y2="538" stroke="#3d3a34" stroke-width="1.7"/><line x1="480" y1="564" x2="957" y2="564" stroke="#3d3a34" stroke-width="2.2"/><line x1="499" y1="591" x2="939" y2="591" stroke="#3d3a34" stroke-width="2.1"/><line x1="523" y1="618" x2="915" y2="618" stroke="#3d3a34" stroke-width="1.5"/><line x1="554" y1="644" x2="883" y2="644" stroke="#3d3a34" stroke-width="1.9"/><line x1="599" y1="671" x2="838" y2="671" stroke="#3d3a34" stroke-width="2.6"/><line x1="719" y1="698" x2="719" y2="698" stroke="#3d3a34" stroke-width="1.7"/><line x1="0" y1="758" x2="1200" y2="758" stroke="#3d3a34" stroke-width="3"/>
+  <rect width="1200" height="900" filter="url(#n10)" opacity="0.16"/>
+</svg>
