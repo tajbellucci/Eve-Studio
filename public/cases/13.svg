@@ -1,17 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
 
   <defs>
-    <linearGradient id="g13" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="bg13" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#e9e5db"/>
-      <stop offset="1" stop-color="#d3cdbd"/>
+      <stop offset="0.55" stop-color="#d3cdbd"/>
+      <stop offset="1" stop-color="#dfdacd"/>
     </linearGradient>
-    <filter id="n13">
-      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" result="t"/>
-      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0.55 0"/>
-      <feComposite operator="in" in2="SourceGraphic"/>
+    <radialGradient id="vig13" cx="50%" cy="46%" r="72%">
+      <stop offset="0%" stop-color="#131210" stop-opacity="0"/>
+      <stop offset="76%" stop-color="#131210" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#131210" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="bokeh13" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="50"/>
+    </filter>
+    <filter id="shadow13" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#131210" flood-opacity="0.25"/>
+    </filter>
+    <filter id="grain13">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" result="t"/>
+      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0.6 0"/>
     </filter>
   </defs>
-  <rect width="1200" height="900" fill="url(#g13)"/>
-  <path d="M 1085 450 L 1008 687 L 735 783 L 458 799 L 180 694 L 162 450 L 236 238 L 441 57 L 748 85 L 928 259 L 1100 450 Z" fill="none" stroke="#131210" stroke-width="2.5"/><path d="M 970 450 L 900 624 L 691 673 L 493 712 L 286 633 L 275 450 L 357 309 L 475 143 L 710 180 L 833 315 L 965 450 Z" fill="none" stroke="#131210" stroke-width="2.5"/><path d="M 856 450 L 811 572 L 659 595 L 531 620 L 393 570 L 385 450 L 446 360 L 522 258 L 673 270 L 757 359 L 851 450 Z" fill="none" stroke="#131210" stroke-width="2.5"/><path d="M 739 450 L 730 526 L 615 486 L 569 526 L 454 535 L 504 450 L 530 410 L 546 317 L 638 357 L 637 428 L 740 450 Z" fill="#131210" stroke="#131210" stroke-width="2.5"/>
-  <rect width="1200" height="900" filter="url(#n13)" opacity="0.16"/>
+  <rect width="1200" height="900" fill="url(#bg13)"/>
+  <circle cx="1000" cy="506" r="345" fill="#131210" opacity="0.19" filter="url(#bokeh13)"/><circle cx="343" cy="249" r="345" fill="#dfdacd" opacity="0.15" filter="url(#bokeh13)"/><circle cx="989" cy="353" r="248" fill="#131210" opacity="0.13" filter="url(#bokeh13)"/><circle cx="174" cy="264" r="300" fill="#f1eee7" opacity="0.20" filter="url(#bokeh13)"/><circle cx="657" cy="86" r="120" fill="#131210" opacity="0.18" filter="url(#bokeh13)"/><circle cx="141" cy="828" r="92" fill="#dfdacd" opacity="0.11" filter="url(#bokeh13)"/><circle cx="513" cy="317" r="117" fill="#131210" opacity="0.09" filter="url(#bokeh13)"/>
+  <g filter="url(#shadow13)">
+    <path d="M 1085 450 L 1008 687 L 735 783 L 458 799 L 180 694 L 162 450 L 236 238 L 441 57 L 748 85 L 928 259 L 1100 450 Z" fill="none" stroke="#131210" stroke-width="2.5"/><path d="M 970 450 L 900 624 L 691 673 L 493 712 L 286 633 L 275 450 L 357 309 L 475 143 L 710 180 L 833 315 L 965 450 Z" fill="none" stroke="#131210" stroke-width="2.5"/><path d="M 856 450 L 811 572 L 659 595 L 531 620 L 393 570 L 385 450 L 446 360 L 522 258 L 673 270 L 757 359 L 851 450 Z" fill="none" stroke="#131210" stroke-width="2.5"/><path d="M 739 450 L 730 526 L 615 486 L 569 526 L 454 535 L 504 450 L 530 410 L 546 317 L 638 357 L 637 428 L 740 450 Z" fill="#131210" stroke="#131210" stroke-width="2.5"/>
+  </g>
+  <rect width="1200" height="900" fill="url(#vig13)"/>
+  <rect width="1200" height="900" filter="url(#grain13)" opacity="0.07"/>
 </svg>

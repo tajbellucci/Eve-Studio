@@ -1,18 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
 
   <defs>
-    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#e9e5db"/>
-      <stop offset="1" stop-color="#d3cdbd"/>
+      <stop offset="0.55" stop-color="#d3cdbd"/>
+      <stop offset="1" stop-color="#dfdacd"/>
     </linearGradient>
-    <filter id="n1">
-      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" result="t"/>
-      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0.55 0"/>
-      <feComposite operator="in" in2="SourceGraphic"/>
+    <radialGradient id="vig1" cx="50%" cy="46%" r="72%">
+      <stop offset="0%" stop-color="#131210" stop-opacity="0"/>
+      <stop offset="76%" stop-color="#131210" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#131210" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="bokeh1" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="78"/>
+    </filter>
+    <filter id="shadow1" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#131210" flood-opacity="0.25"/>
+    </filter>
+    <filter id="grain1">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" result="t"/>
+      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0.6 0"/>
     </filter>
   </defs>
-  <rect width="1200" height="900" fill="url(#g1)"/>
-  <circle cx="578" cy="588" r="80"
+  <rect width="1200" height="900" fill="url(#bg1)"/>
+  <circle cx="219" cy="365" r="177" fill="#131210" opacity="0.17" filter="url(#bokeh1)"/><circle cx="494" cy="121" r="254" fill="#dfdacd" opacity="0.26" filter="url(#bokeh1)"/><circle cx="188" cy="448" r="267" fill="#131210" opacity="0.22" filter="url(#bokeh1)"/><circle cx="836" cy="732" r="372" fill="#f1eee7" opacity="0.25" filter="url(#bokeh1)"/><circle cx="225" cy="649" r="218" fill="#131210" opacity="0.10" filter="url(#bokeh1)"/><circle cx="912" cy="678" r="158" fill="#dfdacd" opacity="0.21" filter="url(#bokeh1)"/>
+  <g filter="url(#shadow1)">
+    <circle cx="578" cy="588" r="80"
       fill="none" stroke="#2a2824" stroke-width="4.4"
       stroke-dasharray="none"/><circle cx="578" cy="588" r="157"
       fill="none" stroke="#2a2824" stroke-width="3.3"
@@ -31,5 +44,7 @@
       stroke-dasharray="63 59"/><circle cx="578" cy="588" r="561"
       fill="none" stroke="#2a2824" stroke-width="3.3"
       stroke-dasharray="150 38"/><circle cx="578" cy="588" r="26" fill="#2a2824"/>
-  <rect width="1200" height="900" filter="url(#n1)" opacity="0.16"/>
+  </g>
+  <rect width="1200" height="900" fill="url(#vig1)"/>
+  <rect width="1200" height="900" filter="url(#grain1)" opacity="0.07"/>
 </svg>

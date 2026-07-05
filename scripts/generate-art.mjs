@@ -1,5 +1,8 @@
 /**
  * Generates 14 abstract monochrome SVG artworks used as case thumbnails.
+ * Each piece layers: a warm gradient ground, blurred "bokeh" depth passes,
+ * a crisp foreground mark (with drop shadow), a vignette, and film grain —
+ * aiming for styled editorial-photography depth rather than flat line art.
  * Deterministic per index — run `node scripts/generate-art.mjs` to regenerate.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -23,24 +26,53 @@ function rng(seed) {
 
 const inks = ["#131210", "#2a2824", "#3d3a34", "#55524b"];
 const papers = ["#f1eee7", "#e9e5db", "#dfdacd", "#d3cdbd"];
+const ACCENT = "#ff4d00";
 
-const defs = (i) => `
+const defs = (i, blurStd) => `
   <defs>
-    <linearGradient id="g${i}" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="bg${i}" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="${papers[i % 4]}"/>
-      <stop offset="1" stop-color="${papers[(i + 2) % 4]}"/>
+      <stop offset="0.55" stop-color="${papers[(i + 2) % 4]}"/>
+      <stop offset="1" stop-color="${papers[(i + 1) % 4]}"/>
     </linearGradient>
-    <filter id="n${i}">
-      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" result="t"/>
-      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0.55 0"/>
-      <feComposite operator="in" in2="SourceGraphic"/>
+    <radialGradient id="vig${i}" cx="50%" cy="46%" r="72%">
+      <stop offset="0%" stop-color="${inks[0]}" stop-opacity="0"/>
+      <stop offset="76%" stop-color="${inks[0]}" stop-opacity="0"/>
+      <stop offset="100%" stop-color="${inks[0]}" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="bokeh${i}" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="${blurStd}"/>
+    </filter>
+    <filter id="shadow${i}" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="${inks[0]}" flood-opacity="0.25"/>
+    </filter>
+    <filter id="grain${i}">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" result="t"/>
+      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0.6 0"/>
     </filter>
   </defs>`;
 
-const grainRect = (i, opacity = 0.16) =>
-  `<rect width="${W}" height="${H}" filter="url(#n${i})" opacity="${opacity}"/>`;
+/** soft blurred circles behind the mark, simulating depth-of-field light */
+function bokeh(i, r) {
+  const n = 5 + Math.floor(r() * 3);
+  const useAccent = i % 4 === 0;
+  let circles = "";
+  for (let k = 0; k < n; k++) {
+    const cx = W * (0.08 + r() * 0.84);
+    const cy = H * (0.08 + r() * 0.84);
+    const rad = 90 + r() * 320;
+    const accent = useAccent && k === 0;
+    const fill = accent ? ACCENT : k % 2 === 0 ? inks[0] : papers[(i + k) % 4];
+    const opacity = accent ? 0.14 + r() * 0.08 : 0.08 + r() * 0.18;
+    circles += `<circle cx="${cx.toFixed(0)}" cy="${cy.toFixed(0)}" r="${rad.toFixed(0)}" fill="${fill}" opacity="${opacity.toFixed(2)}" filter="url(#bokeh${i})"/>`;
+  }
+  return circles;
+}
 
-/* --- composition archetypes ------------------------------------------ */
+const grainRect = (i, opacity = 0.07) =>
+  `<rect width="${W}" height="${H}" filter="url(#grain${i})" opacity="${opacity}"/>`;
+
+/* --- composition archetypes (crisp foreground marks) ------------------ */
 
 function arcs(i, r) {
   const ink = inks[i % 4];
@@ -157,10 +189,16 @@ const archetypes = [arcs, bars, orb, waves, grid, blob, diagonal];
 for (let i = 1; i <= 14; i++) {
   const r = rng(i * 7 + 3);
   const art = archetypes[(i - 1) % archetypes.length](i, r);
+  const blurStd = (46 + r() * 38).toFixed(0);
+
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice">
-${defs(i)}
-  <rect width="${W}" height="${H}" fill="url(#g${i})"/>
-  ${art}
+${defs(i, blurStd)}
+  <rect width="${W}" height="${H}" fill="url(#bg${i})"/>
+  ${bokeh(i, r)}
+  <g filter="url(#shadow${i})">
+    ${art}
+  </g>
+  <rect width="${W}" height="${H}" fill="url(#vig${i})"/>
   ${grainRect(i)}
 </svg>`;
   writeFileSync(join(out, `${String(i).padStart(2, "0")}.svg`), svg);

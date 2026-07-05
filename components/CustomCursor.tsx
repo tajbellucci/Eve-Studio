@@ -6,20 +6,29 @@ import { gsap } from "@/lib/gsap";
 type CursorState = "default" | "view" | "play" | "link" | "hidden";
 
 /**
- * Circular custom cursor (fine pointers only).
+ * Circular custom cursor.
  * Elements opt in via `data-cursor="view" | "play" | "link"`.
  * Elements with `data-magnetic` pull themselves toward the pointer.
+ *
+ * The dot/ring are always mounted (just invisible at opacity 0) so their
+ * refs are valid the moment this component's effect runs — gating the
+ * whole subtree behind a "should I even render this" state flag meant
+ * gsap.quickTo captured `null` targets on first mount and never recovered,
+ * even after the real elements showed up later.
  */
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<CursorState>("hidden");
-  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-    setEnabled(true);
-    document.body.dataset.customCursor = "true";
+    // Don't trust static (pointer: fine) media queries to gate this — plenty of
+    // real mouse-equipped laptops (touchscreen hybrids, some trackpad/browser
+    // combos) report `coarse` and would silently disable the cursor forever.
+    // Instead react to genuine input: show on the first real mousemove, hide
+    // for good the moment a touch event proves this is a touch session.
+    let isTouch = false;
+    let current: CursorState = "default";
 
     const dot = dotRef.current!;
     const ring = ringRef.current!;
@@ -28,9 +37,12 @@ export default function CustomCursor() {
     const ringX = gsap.quickTo(ring, "x", { duration: 0.45, ease: "power3.out" });
     const ringY = gsap.quickTo(ring, "y", { duration: 0.45, ease: "power3.out" });
 
-    let current: CursorState = "default";
-
     const onMove = (e: MouseEvent) => {
+      if (isTouch) return;
+      if (!document.body.dataset.customCursor) {
+        document.body.dataset.customCursor = "true";
+      }
+
       dotX(e.clientX);
       dotY(e.clientY);
       ringX(e.clientX);
@@ -41,11 +53,24 @@ export default function CustomCursor() {
       if (next !== current) {
         current = next;
         setState(next);
+      } else if (current === "hidden") {
+        // first-ever move: reveal the cursor even if it hasn't crossed a target
+        current = "default";
+        setState("default");
       }
     };
 
+    const onTouchStart = () => {
+      isTouch = true;
+      delete document.body.dataset.customCursor;
+      current = "hidden";
+      setState("hidden");
+    };
+
     const onLeave = () => setState("hidden");
-    const onEnter = () => setState(current);
+    const onEnter = () => {
+      if (!isTouch) setState(current);
+    };
 
     // magnetic pull for tagged elements
     const magnets = Array.from(document.querySelectorAll<HTMLElement>("[data-magnetic]"));
@@ -69,12 +94,13 @@ export default function CustomCursor() {
       };
     });
 
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("mousemove", onMove);
     document.documentElement.addEventListener("mouseleave", onLeave);
     document.documentElement.addEventListener("mouseenter", onEnter);
-    setState("default");
 
     return () => {
+      window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("mousemove", onMove);
       document.documentElement.removeEventListener("mouseleave", onLeave);
       document.documentElement.removeEventListener("mouseenter", onEnter);
@@ -84,7 +110,6 @@ export default function CustomCursor() {
   }, []);
 
   useEffect(() => {
-    if (!enabled) return;
     const ring = ringRef.current!;
     const dot = dotRef.current!;
     const big = state === "view" || state === "play";
@@ -103,15 +128,14 @@ export default function CustomCursor() {
       scale: state === "link" ? 0.5 : 1,
       duration: 0.3,
     });
-  }, [state, enabled]);
-
-  if (!enabled) return null;
+  }, [state]);
 
   return (
     <>
       <div
         ref={ringRef}
-        className="pointer-events-none fixed left-0 top-0 z-[95] flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border"
+        data-cursor-ring
+        className="pointer-events-none fixed left-0 top-0 z-[95] flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border opacity-0"
         style={{ borderColor: "rgba(19,18,16,0.65)" }}
         aria-hidden
       >
@@ -124,7 +148,8 @@ export default function CustomCursor() {
       </div>
       <div
         ref={dotRef}
-        className="pointer-events-none fixed left-0 top-0 z-[95] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ink"
+        data-cursor-dot
+        className="pointer-events-none fixed left-0 top-0 z-[95] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ink opacity-0"
         aria-hidden
       />
     </>

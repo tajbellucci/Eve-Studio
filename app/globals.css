@@ -55,13 +55,11 @@ body {
   color: var(--color-ivory);
 }
 
-/* hide the native cursor when the custom one is active (fine pointers only) */
-@media (pointer: fine) {
-  body[data-custom-cursor="true"],
-  body[data-custom-cursor="true"] a,
-  body[data-custom-cursor="true"] button {
-    cursor: none;
-  }
+/* hide the native cursor once real mouse input is detected (see CustomCursor.tsx) */
+body[data-custom-cursor="true"],
+body[data-custom-cursor="true"] a,
+body[data-custom-cursor="true"] button {
+  cursor: none;
 }
 
 /* ---------- typography voices ---------- */
