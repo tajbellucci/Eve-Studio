@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "@/lib/gsap";
+import { asset } from "@/lib/asset";
 import type { CaseItem } from "@/data/cases";
 
 export default function CaseCard({
@@ -121,7 +122,7 @@ export default function CaseCard({
             className="case-media aspect-[4/3] w-full will-change-transform"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={item.image} alt={`${item.title.join(" ")} — case visual`} loading="lazy" />
+            <img src={asset(item.image)} alt={`${item.title.join(" ")} — case visual`} loading="lazy" />
           </div>
         </Link>
       </div>

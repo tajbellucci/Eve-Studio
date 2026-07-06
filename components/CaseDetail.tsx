@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { CASES, type CaseItem } from "@/data/cases";
+import { asset } from "@/lib/asset";
 import { useReveal } from "@/lib/useReveal";
 import { Asterisk } from "@/components/Decor";
 
@@ -78,7 +79,7 @@ export default function CaseDetail({ item, next }: { item: CaseItem; next: CaseI
         <div className="case-media aspect-[16/9] w-full overflow-hidden rounded-sm">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={item.image}
+            src={asset(item.image)}
             alt={`${item.title.join(" ")} — case visual`}
             style={{ transform: "scale(1)" }}
           />
@@ -168,7 +169,7 @@ export default function CaseDetail({ item, next }: { item: CaseItem; next: CaseI
         <div className="reveal-fade case-media aspect-[4/3] overflow-hidden rounded-sm">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={item.image}
+            src={asset(item.image)}
             alt=""
             aria-hidden
             style={{ transform: "scale(1.25)", objectPosition: "20% 30%" }}
@@ -177,7 +178,7 @@ export default function CaseDetail({ item, next }: { item: CaseItem; next: CaseI
         <div className="reveal-fade case-media aspect-[4/3] overflow-hidden rounded-sm">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={item.image}
+            src={asset(item.image)}
             alt=""
             aria-hidden
             style={{ transform: "scale(1.25)", objectPosition: "80% 70%" }}
