@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "@/lib/gsap";
 import type { CaseItem } from "@/data/cases";
 
@@ -101,26 +102,28 @@ export default function CaseCard({
           <span className="label text-ink-soft/80">{item.tags}</span>
           <span className="serif-num text-sm text-ink-soft/60">{item.year}</span>
         </div>
-        <a
-          href="#contact"
+        <Link
+          href={`/work/${item.slug}`}
           className="pill mt-8 w-fit"
           data-cursor="link"
           data-magnetic
           aria-label={`Explore ${item.title.join(" ")}`}
         >
           Explore <span aria-hidden>→</span>
-        </a>
+        </Link>
       </div>
 
       {/* media column */}
       <div className={flipped ? "md:order-1" : "md:order-2"}>
-        <div
-          ref={mediaRef}
-          className="case-media aspect-[4/3] w-full will-change-transform"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={item.image} alt={`${item.title.join(" ")} — abstract case visual`} loading="lazy" />
-        </div>
+        <Link href={`/work/${item.slug}`} aria-label={`Explore ${item.title.join(" ")}`}>
+          <div
+            ref={mediaRef}
+            className="case-media aspect-[4/3] w-full will-change-transform"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={item.image} alt={`${item.title.join(" ")} — case visual`} loading="lazy" />
+          </div>
+        </Link>
       </div>
     </article>
   );

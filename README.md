@@ -1,13 +1,13 @@
 # Ava Studio®
 
-An Awwwards-style portfolio site for **Ava Studio**, a fictional full-service
-creative studio. Editorial, kinetic, monochrome — warm ivory paper, deep ink
-typography, and premium motion throughout.
+An Awwwards-style portfolio site for **Ava Studio**, a full-service creative
+studio, showcasing real client work. Editorial, kinetic, monochrome — warm
+ivory paper, deep ink typography, and premium motion throughout.
 
 Original design inspired by the visual language of experimental creative-agency
-sites. No third-party brand assets are used: all imagery is generated locally
-as abstract SVG artwork, and both fonts are self-hosted open-source variable
-fonts.
+sites. Case thumbnails are generated abstract artwork matched to each real
+project's brand palette (no screenshots or third-party assets are embedded),
+and both fonts are self-hosted open-source variable fonts.
 
 ## Stack
 
@@ -34,16 +34,19 @@ npm run build && npm start
 | `Header` | Fixed nav in `mix-blend-difference`, magnetic links |
 | `Hero` | Oversized split studio name, scattered sticker labels, rotating "play showreel" button |
 | `AboutServices` | "Just about" statement + flowing services wall in three typographic voices |
-| `SelectedCases` / `CaseCard` | 14 alternating case rows — clip reveals, scroll parallax, cursor-follow images |
+| `SelectedCases` / `CaseCard` | Alternating case rows — clip reveals, scroll parallax, cursor-follow images |
+| `CaseDetail` (`app/work/[slug]`) | Per-case detail page — accent-themed Overview / Requirements / Solution / gallery |
 | `Awards` | Broken-word typographic composition + count-up stats grid |
 | `Footer` | Interactive poster — CTA, marquee, sun-face graphic, full-bleed closing wordmark |
 | `CustomCursor` | Circular cursor with `view` / `play` / `link` states (shows on real mouse input, hides on touch) |
 | `MarqueeText` | Reusable infinite horizontal loop |
 | `Decor` | Starburst, sun face, squiggle, circular text and other hand-drawn marks |
 
-Case thumbnails live in `public/cases/` and are produced by
-`node scripts/generate-art.mjs` (deterministic abstract compositions — arcs,
-bars, waves, grids, blobs — in the site's ink/paper palette).
+Case data (title, description, tech stack, accent color, etc.) lives in
+`data/cases.ts`. Thumbnails live in `public/cases/` and are produced by
+`node scripts/generate-case-art.mjs` — brand-matched abstract compositions
+keyed to each real project's own palette and a simple geometric echo of its
+UI (concentric rings, module grids, chat bubbles, …).
 
 Reduced-motion preferences are respected for ambient animations, cursor
 effects are disabled on touch devices, and all type scales fluidly from

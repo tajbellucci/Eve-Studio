@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 /** Small hand-drawn-feel decorative graphics used across the site. */
 
 export function Starburst({ className = "" }: { className?: string }) {
@@ -99,9 +101,15 @@ export function CircularText({
   );
 }
 
-export function Asterisk({ className = "" }: { className?: string }) {
+export function Asterisk({
+  className = "",
+  style,
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) {
   return (
-    <svg viewBox="0 0 40 40" className={className} aria-hidden>
+    <svg viewBox="0 0 40 40" className={className} style={style} aria-hidden>
       <g stroke="currentColor" strokeWidth="4" strokeLinecap="round">
         <line x1="20" y1="4" x2="20" y2="36" />
         <line x1="6" y1="12" x2="34" y2="28" />

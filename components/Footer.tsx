@@ -97,7 +97,7 @@ export default function Footer() {
 
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 px-[var(--gutter)] py-5">
         <span className="label text-ink-soft">© 2018–2026 Ava Studio</span>
-        <span className="label text-ink-soft">A fictional studio, a real design system</span>
+        <span className="label text-ink-soft">Real work, shown as it shipped</span>
         <a href="#top" className="label link-line" data-cursor="link" data-magnetic>
           Back to top ↑
         </a>
