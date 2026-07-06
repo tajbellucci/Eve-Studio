@@ -171,6 +171,75 @@ function dubaiGov(r) {
   return shapes;
 }
 
+// Abraj Stay — a flight path arc across the canvas + a luggage tag
+function abrajStay(r) {
+  const y0 = H * 0.72;
+  const y1 = H * 0.2;
+  let path = `M ${W * 0.08} ${y0} Q ${W * 0.5} ${y1 - 60} ${W * 0.94} ${y0 - 40}`;
+  let shapes = `<path d="${path}" fill="none" stroke="#c23b2e" stroke-width="3" stroke-dasharray="14 14"/>`;
+  // little plane triangle at the path's midpoint-ish
+  const px = W * 0.52;
+  const py = y1 - 30;
+  shapes += `<g transform="translate(${px.toFixed(0)} ${py.toFixed(0)}) rotate(-18)">
+    <path d="M -22 0 L 18 -8 L 8 0 L 18 8 Z" fill="#c23b2e"/>
+  </g>`;
+  // luggage tag
+  const tx = W * 0.24;
+  const ty = H * 0.44;
+  shapes += `<path d="M ${tx} ${ty} l 130 0 l 0 170 l -65 40 l -65 -40 Z" fill="#fdf0ee" stroke="#c23b2e" stroke-width="3"/>`;
+  shapes += `<circle cx="${(tx + 65).toFixed(0)}" cy="${(ty + 34).toFixed(0)}" r="10" fill="none" stroke="#c23b2e" stroke-width="3"/>`;
+  for (let k = 0; k < 3; k++) {
+    shapes += `<line x1="${(tx + 25).toFixed(0)}" y1="${(ty + 74 + k * 22).toFixed(0)}" x2="${(tx + 105).toFixed(0)}" y2="${(ty + 74 + k * 22).toFixed(0)}" stroke="#c23b2e" stroke-width="3" opacity="${0.8 - k * 0.15}"/>`;
+  }
+  return shapes;
+}
+
+// Tamayouz Excellence Module — an excellence seal with a ribbon
+function tamayouz(r) {
+  const cx = W * 0.5;
+  const cy = H * 0.42;
+  let shapes = "";
+  for (let k = 0; k < 4; k++) {
+    shapes += `<circle cx="${cx}" cy="${cy}" r="${80 + k * 30}" fill="none" stroke="#3b5fe0" stroke-width="3"/>`;
+  }
+  // five-point star
+  const starPts = [];
+  for (let k = 0; k < 5; k++) {
+    const a = -Math.PI / 2 + (k * 4 * Math.PI) / 5;
+    starPts.push([cx + Math.cos(a) * 46, cy + Math.sin(a) * 46]);
+  }
+  shapes += `<path d="M ${starPts.map(([x, y]) => `${x.toFixed(0)} ${y.toFixed(0)}`).join(" L ")} Z" fill="#3b5fe0"/>`;
+  // ribbon tails
+  shapes += `<path d="M ${cx - 26} ${cy + 90} L ${cx - 46} ${cy + 200} L ${cx - 8} ${cy + 170} Z" fill="#3b5fe0"/>`;
+  shapes += `<path d="M ${cx + 26} ${cy + 90} L ${cx + 46} ${cy + 200} L ${cx + 8} ${cy + 170} Z" fill="#3b5fe0"/>`;
+  return shapes;
+}
+
+// Bagtote — a suitcase silhouette + connected blockchain-style node network
+function bagtote(r) {
+  let shapes = "";
+  const bx = W * 0.28;
+  const by = H * 0.32;
+  const bw = 220;
+  const bh = 280;
+  shapes += `<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="18" fill="#eef2fd" stroke="#2247c9" stroke-width="4"/>`;
+  shapes += `<rect x="${(bx + bw * 0.3).toFixed(0)}" y="${(by - 26).toFixed(0)}" width="${(bw * 0.4).toFixed(0)}" height="30" rx="8" fill="none" stroke="#2247c9" stroke-width="4"/>`;
+  shapes += `<line x1="${bx}" y1="${(by + bh * 0.42).toFixed(0)}" x2="${(bx + bw).toFixed(0)}" y2="${(by + bh * 0.42).toFixed(0)}" stroke="#2247c9" stroke-width="3" opacity="0.6"/>`;
+  // node network to the right suggesting blockchain
+  const nodes = [];
+  for (let k = 0; k < 6; k++) {
+    nodes.push([W * (0.66 + r() * 0.26), H * (0.2 + r() * 0.55)]);
+  }
+  for (let k = 0; k < nodes.length; k++) {
+    const next = nodes[(k + 1) % nodes.length];
+    shapes += `<line x1="${nodes[k][0].toFixed(0)}" y1="${nodes[k][1].toFixed(0)}" x2="${next[0].toFixed(0)}" y2="${next[1].toFixed(0)}" stroke="#2247c9" stroke-width="2" opacity="0.5"/>`;
+  }
+  nodes.forEach(([x, y], k) => {
+    shapes += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${k === 0 ? 14 : 9}" fill="${k === 0 ? "#c23b2e" : "#2247c9"}"/>`;
+  });
+  return shapes;
+}
+
 const configs = [
   {
     file: "dil-ki-baat",
@@ -221,6 +290,36 @@ const configs = [
     bokehColors: ["#d81b8a", "#fdf3fa", "#e878b8"],
     shadowColor: "#7a0e4c",
     art: dubaiGov,
+  },
+  {
+    file: "abraj-stay",
+    seed: 106,
+    bgFrom: "#f8ece9",
+    bgMid: "#eccbc3",
+    bgTo: "#dba299",
+    bokehColors: ["#c23b2e", "#f8ece9", "#e07a63"],
+    shadowColor: "#6b1c12",
+    art: abrajStay,
+  },
+  {
+    file: "tamayouz-excellence-module",
+    seed: 107,
+    bgFrom: "#eef1fc",
+    bgMid: "#dbe3f8",
+    bgTo: "#c3d0f2",
+    bokehColors: ["#3b5fe0", "#eef1fc", "#7f96ec"],
+    shadowColor: "#16256e",
+    art: tamayouz,
+  },
+  {
+    file: "bagtote",
+    seed: 108,
+    bgFrom: "#eef1fb",
+    bgMid: "#dbe2f6",
+    bgTo: "#c2ceee",
+    bokehColors: ["#2247c9", "#eef1fb", "#c23b2e"],
+    shadowColor: "#0f1d54",
+    art: bagtote,
   },
 ];
 

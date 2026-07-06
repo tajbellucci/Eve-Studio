@@ -162,4 +162,88 @@ export const CASES: CaseItem[] = [
     ],
     credit: "via Wenawa",
   },
+  {
+    slug: "abraj-stay",
+    num: "06",
+    title: ["Abraj", "Stay"],
+    description:
+      "A travel platform that makes booking flights, hotels, tours and rentals simple and fast — a clean, mobile-first interface for planning a trip without the usual friction.",
+    tags: "Website Development · Graphic Design",
+    year: "2024",
+    image: "/cases/abraj-stay.svg",
+    accent: "#c23b2e",
+    accentSoft: "#f7e2df",
+    industry: "Travel & Hospitality",
+    techStack: ["Shopify", "HTML/CSS", "JavaScript"],
+    scopeOfWork: ["Website Development", "Graphic Design"],
+    overview:
+      "Abraj Stay needed one platform to cover flights, hotels, tours and rentals without the booking flow turning into four different products stitched together. The brief was a clean, intuitive interface built mobile-first, so planning a trip stays simple even when the itinerary isn't.",
+    requirements: [
+      "A single, coherent booking flow across flights, hotels, tours and rentals rather than four disconnected tools",
+      "Mobile-first performance, since most travel research and booking happens on a phone",
+      "A visual identity confident enough to compete with established travel platforms",
+    ],
+    solution: [
+      "Designed and built the full booking site — search, listings and checkout — across flights, hotels, tours and rentals",
+      "Prioritized a mobile-first layout and navigation so the experience holds up on a phone first, desktop second",
+      "Delivered the brand's dark, warm visual identity across the marketing site and booking flow",
+    ],
+    credit: "via Wenawa",
+  },
+  {
+    slug: "tamayouz-excellence-module",
+    num: "07",
+    title: ["Tamayouz", "Excellence Module"],
+    description:
+      "A corporate intranet module built to Qatar's Governance Excellence Program standards — workflow automation and reporting for organizational compliance.",
+    tags: "Website Development · Graphic Design",
+    year: "2024",
+    image: "/cases/tamayouz-excellence-module.svg",
+    accent: "#3b5fe0",
+    accentSoft: "#e2e8fb",
+    industry: "Corporate / Enterprise Software",
+    techStack: ["HTML/CSS", "JavaScript", "Custom CMS"],
+    scopeOfWork: ["Website Development", "Graphic Design"],
+    overview:
+      "Tamayouz — Arabic for excellence — needed a corporate intranet module that could hold an organization accountable to Qatar's Governance Excellence Program without turning compliance into paperwork. The brief was workflow automation and reporting built into a portal people would actually use.",
+    requirements: [
+      "Structured practice management that maps directly to the Governance Excellence Program's standards",
+      "Workflow automation so compliance tracking doesn't rely on manual reporting",
+      "Real-time reporting an internal team can read at a glance, not just an auditor",
+    ],
+    solution: [
+      "Designed and built the intranet module's front-end, structured around the program's practice areas",
+      "Implemented workflow automation to move compliance tasks through the system with less manual handling",
+      "Built real-time reporting views so operational efficiency and compliance status are visible as they happen",
+    ],
+    credit: "via Wenawa",
+  },
+  {
+    slug: "bagtote",
+    num: "08",
+    title: ["Bagtote", "App"],
+    description:
+      "A mobile platform connecting travelers with spare luggage space to people who need affordable shipping — secure, blockchain-backed, and built for real-time tracking.",
+    tags: "App Design · Development",
+    year: "2024",
+    image: "/cases/bagtote.svg",
+    accent: "#2247c9",
+    accentSoft: "#dde6fb",
+    industry: "Logistics / C2C Marketplace",
+    techStack: ["React Native", "Blockchain", "Node.js"],
+    scopeOfWork: ["Product Design", "Graphic Design", "App Development"],
+    overview:
+      "Bagtote turns a traveler's spare suitcase space into a shipping lane — matching people who have room to carry with people who need something delivered, faster and cheaper than traditional couriers. Trust was the whole problem: strangers coordinating shipments needed transactions that were secure and transparent by default.",
+    requirements: [
+      "A trust layer strangers can rely on when one is carrying the other's belongings across a trip",
+      "Real-time tracking so both sides can see where a shipment actually is",
+      "A mobile experience simple enough to use mid-trip, not just at a desk",
+    ],
+    solution: [
+      "Designed and built the mobile app end to end — listing spare luggage space, matching, and handoff confirmation",
+      "Used blockchain-backed transactions to keep payment and proof-of-delivery secure and transparent for both sides",
+      "Built real-time tracking into the shipment flow so status is visible from pickup to drop-off",
+    ],
+    credit: "via Wenawa",
+  },
 ];
