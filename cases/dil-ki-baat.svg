@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg-dil-ki-baat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f1eee7"/>
+      <stop offset="0.55" stop-color="#e7e7f4"/>
+      <stop offset="1" stop-color="#dfe0f0"/>
+    </linearGradient>
+    <radialGradient id="vig-dil-ki-baat" cx="50%" cy="46%" r="72%">
+      <stop offset="0%" stop-color="#131210" stop-opacity="0"/>
+      <stop offset="76%" stop-color="#131210" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#131210" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="bokeh-dil-ki-baat" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="63"/>
+    </filter>
+    <filter id="shadow-dil-ki-baat" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#22246b" flood-opacity="0.28"/>
+    </filter>
+    <filter id="grain-dil-ki-baat">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" result="t"/>
+      <feColorMatrix in="t" type="matrix" values="0 0 0 0 0.07 0 0 0 0 0.07 0 0 0 0 0.06 0 0 0 0.6 0"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg-dil-ki-baat)"/>
+  <circle cx="997" cy="408" r="205" fill="#3c3fb0" opacity="0.17" filter="url(#bokeh-dil-ki-baat)"/><circle cx="710" cy="645" r="351" fill="#18c7b3" opacity="0.23" filter="url(#bokeh-dil-ki-baat)"/><circle cx="649" cy="252" r="349" fill="#f1eee7" opacity="0.15" filter="url(#bokeh-dil-ki-baat)"/><circle cx="854" cy="355" r="381" fill="#3c3fb0" opacity="0.25" filter="url(#bokeh-dil-ki-baat)"/><circle cx="381" cy="783" r="274" fill="#18c7b3" opacity="0.23" filter="url(#bokeh-dil-ki-baat)"/><circle cx="305" cy="266" r="274" fill="#f1eee7" opacity="0.29" filter="url(#bokeh-dil-ki-baat)"/><circle cx="630" cy="289" r="94" fill="#3c3fb0" opacity="0.15" filter="url(#bokeh-dil-ki-baat)"/>
+  <g filter="url(#shadow-dil-ki-baat)">
+    <circle cx="384" cy="450" r="60" fill="none" stroke="#3c3fb0" stroke-width="5" opacity="1"/><circle cx="384" cy="450" r="118" fill="none" stroke="#3c3fb0" stroke-width="2.4" opacity="0.91"/><circle cx="384" cy="450" r="176" fill="none" stroke="#3c3fb0" stroke-width="2.4" opacity="0.8200000000000001"/><circle cx="384" cy="450" r="234" fill="none" stroke="#3c3fb0" stroke-width="2.4" opacity="0.73"/><circle cx="384" cy="450" r="292" fill="none" stroke="#3c3fb0" stroke-width="2.4" opacity="0.64"/><circle cx="384" cy="450" r="350" fill="none" stroke="#3c3fb0" stroke-width="2.4" opacity="0.55"/><circle cx="384" cy="450" r="408" fill="none" stroke="#3c3fb0" stroke-width="2.4" opacity="0.45999999999999996"/><circle cx="384" cy="450" r="466" fill="none" stroke="#3c3fb0" stroke-width="2.4" opacity="0.37"/><circle cx="384" cy="450" r="24" fill="#18c7b3"/><circle cx="744" cy="378" r="14" fill="#3c3fb0" opacity="0.85"/><circle cx="814" cy="412" r="20" fill="#18c7b3" opacity="0.85"/><circle cx="884" cy="414" r="14" fill="#3c3fb0" opacity="0.85"/><circle cx="954" cy="384" r="20" fill="#18c7b3" opacity="0.85"/><circle cx="1024" cy="348" r="14" fill="#3c3fb0" opacity="0.85"/>
+  </g>
+  <rect width="1200" height="900" fill="url(#vig-dil-ki-baat)"/>
+  <rect width="1200" height="900" filter="url(#grain-dil-ki-baat)" opacity="0.06"/>
+</svg>
