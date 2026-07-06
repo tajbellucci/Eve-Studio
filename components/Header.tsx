@@ -29,7 +29,7 @@ export default function Header({ start }: { start: boolean }) {
     >
       <a href="#top" className="hdr-item opacity-0" data-cursor="link" data-magnetic>
         <span className="font-condensed text-lg uppercase leading-none tracking-tight">
-          Eve
+          Ava
           <br />
           Studio<sup className="text-[0.5em] align-super">®</sup>
         </span>

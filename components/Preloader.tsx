@@ -78,7 +78,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
       </div>
 
       <div className="pre-row absolute bottom-[4vh] left-0 flex w-full items-end justify-between px-[var(--gutter)]">
-        <span className="label opacity-60">Eve Studio® — loading</span>
+        <span className="label opacity-60">Ava Studio® — loading</span>
         <span className="font-display text-[clamp(3rem,8vw,7rem)] leading-none">
           <span ref={counterRef}>000</span>
           <span className="text-[0.4em] align-top">%</span>

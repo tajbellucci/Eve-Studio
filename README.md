@@ -1,6 +1,6 @@
-# Eve Studio®
+# Ava Studio®
 
-An Awwwards-style portfolio site for **Eve Studio**, a fictional full-service
+An Awwwards-style portfolio site for **Ava Studio**, a fictional full-service
 creative studio. Editorial, kinetic, monochrome — warm ivory paper, deep ink
 typography, and premium motion throughout.
 
@@ -37,7 +37,7 @@ npm run build && npm start
 | `SelectedCases` / `CaseCard` | 14 alternating case rows — clip reveals, scroll parallax, cursor-follow images |
 | `Awards` | Broken-word typographic composition + count-up stats grid |
 | `Footer` | Interactive poster — CTA, marquee, sun-face graphic, full-bleed closing wordmark |
-| `CustomCursor` | Circular cursor with `view` / `play` / `link` states (fine pointers only) |
+| `CustomCursor` | Circular cursor with `view` / `play` / `link` states (shows on real mouse input, hides on touch) |
 | `MarqueeText` | Reusable infinite horizontal loop |
 | `Decor` | Starburst, sun face, squiggle, circular text and other hand-drawn marks |
 

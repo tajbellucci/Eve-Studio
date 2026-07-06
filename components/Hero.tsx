@@ -54,7 +54,7 @@ export default function Hero({ start }: { start: boolean }) {
       <div className="relative z-10 max-w-[46rem]">
         <h1 className="font-display text-[clamp(1.7rem,3.6vw,3.4rem)] leading-[1.08] tracking-tight">
           <span className="mask-line hero-line">
-            <span className="mask-line-inner">Eve Studio is a full-service</span>
+            <span className="mask-line-inner">Ava Studio is a full-service</span>
           </span>
           <span className="mask-line hero-line">
             <span className="mask-line-inner">
@@ -97,7 +97,7 @@ export default function Hero({ start }: { start: boolean }) {
       <div className="hero-name relative z-0 -mx-[0.06em] mt-6 select-none leading-[0.82]">
         <span className="mask-line hero-line">
           <span className="mask-line-inner font-display block text-[length:var(--step-hero)] uppercase">
-            Eve&nbsp;Stu
+            Ava&nbsp;Stu
           </span>
         </span>
         <span className="mask-line hero-line">

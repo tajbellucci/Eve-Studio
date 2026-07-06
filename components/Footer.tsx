@@ -51,12 +51,12 @@ export default function Footer() {
             <span className="label text-ink-soft">New business</span>
             <br />
             <a
-              href="mailto:hello@evestudio.example"
+              href="mailto:hello@avastudio.example"
               className="link-line mt-2 inline-block font-display text-[clamp(1.4rem,3vw,2.6rem)]"
               data-cursor="link"
               data-magnetic
             >
-              hello@evestudio.example
+              hello@avastudio.example
             </a>
             <br />
             <Squiggle className="mt-3 w-32 text-ink" />
@@ -89,14 +89,14 @@ export default function Footer() {
         <div className="-mb-[0.16em] overflow-hidden px-[var(--gutter)] leading-[0.8]">
           <span className="mask-line">
             <span className="mask-line-inner font-display block whitespace-nowrap text-[length:var(--step-wordmark)] uppercase tracking-[-0.04em]">
-              Eve Studio<sup className="text-[0.18em] align-[3em]">®</sup>
+              Ava Studio<sup className="text-[0.18em] align-[3em]">®</sup>
             </span>
           </span>
         </div>
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 px-[var(--gutter)] py-5">
-        <span className="label text-ink-soft">© 2018–2026 Eve Studio</span>
+        <span className="label text-ink-soft">© 2018–2026 Ava Studio</span>
         <span className="label text-ink-soft">A fictional studio, a real design system</span>
         <a href="#top" className="label link-line" data-cursor="link" data-magnetic>
           Back to top ↑

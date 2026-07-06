@@ -1,8 +1,8 @@
 {
-  "name": "eve-studio",
+  "name": "ava-studio",
   "version": "1.0.0",
   "private": true,
-  "description": "Eve Studio — a full-service creative studio crafting unforgettable digital experiences.",
+  "description": "Ava Studio — a full-service creative studio crafting unforgettable digital experiences.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
