@@ -1,3 +1,14 @@
+/** Recognizable UI archetype each case's generated artwork recreates. */
+export type CaseLayout =
+  | "marketplace-search"
+  | "association-hero"
+  | "companion-app"
+  | "module-dashboard"
+  | "storefront-devices"
+  | "travel-booking"
+  | "portal-dashboard"
+  | "logistics-app";
+
 export type CaseItem = {
   slug: string;
   num: string;
@@ -7,7 +18,8 @@ export type CaseItem = {
   /** short tag list shown on the index row */
   tags: string;
   year: string;
-  image: string;
+  /** which stylized interface mockup CaseArtwork renders for this case */
+  layout: CaseLayout;
   /** brand accent used only on this case's own detail page */
   accent: string;
   accentSoft: string;
@@ -31,7 +43,7 @@ export const CASES: CaseItem[] = [
       "A therapist marketplace connecting people to certified CBT therapists — search, video consultation, and online prescriptions in one calm, approachable platform.",
     tags: "Web Design · Development · Platform",
     year: "2024",
-    image: "/cases/dil-ki-baat.svg",
+    layout: "marketplace-search",
     accent: "#3c3fb0",
     accentSoft: "#e3e4fa",
     industry: "Mental Health / Telehealth",
@@ -60,7 +72,7 @@ export const CASES: CaseItem[] = [
       "Web design and development for Pakistan's first national CBT association — a credible, resource-rich home for the country's cognitive therapy community.",
     tags: "Web Design · Development",
     year: "2023",
-    image: "/cases/pact.svg",
+    layout: "association-hero",
     accent: "#5b6b3f",
     accentSoft: "#e6e8d6",
     industry: "Professional Association / Nonprofit",
@@ -88,7 +100,7 @@ export const CASES: CaseItem[] = [
       "Pakistan's first CBT-based AI companion — talk, call, or message in four languages, with a calm voice built to feel human without pretending to be a therapist.",
     tags: "Product Design · Branding · App",
     year: "2026",
-    image: "/cases/aiza-ai.svg",
+    layout: "companion-app",
     accent: "#d9714a",
     accentSoft: "#f6e6dd",
     industry: "Mental Health / AI",
@@ -115,7 +127,7 @@ export const CASES: CaseItem[] = [
       "A self-guided, module-based CBT program — nine structured lessons from Stress to Staying Well, each one trackable and illustrated to feel like a course, not a worksheet.",
     tags: "Web App · Development",
     year: "2023",
-    image: "/cases/123cbt.svg",
+    layout: "module-dashboard",
     accent: "#1c2c4d",
     accentSoft: "#dfe3ec",
     industry: "Mental Health / E-learning",
@@ -142,7 +154,7 @@ export const CASES: CaseItem[] = [
       "An end-to-end e-commerce rebuild for a Dubai government ministry — a fast, mobile-first storefront built on Shopify.",
     tags: "Website Development · Graphic Design",
     year: "2023",
-    image: "/cases/ministry-of-dubai-government.svg",
+    layout: "storefront-devices",
     accent: "#d81b8a",
     accentSoft: "#fbe1ef",
     industry: "Government / E-commerce",
@@ -170,7 +182,7 @@ export const CASES: CaseItem[] = [
       "A travel platform that makes booking flights, hotels, tours and rentals simple and fast — a clean, mobile-first interface for planning a trip without the usual friction.",
     tags: "Website Development · Graphic Design",
     year: "2024",
-    image: "/cases/abraj-stay.svg",
+    layout: "travel-booking",
     accent: "#c23b2e",
     accentSoft: "#f7e2df",
     industry: "Travel & Hospitality",
@@ -198,7 +210,7 @@ export const CASES: CaseItem[] = [
       "A corporate intranet module built to Qatar's Governance Excellence Program standards — workflow automation and reporting for organizational compliance.",
     tags: "Website Development · Graphic Design",
     year: "2024",
-    image: "/cases/tamayouz-excellence-module.svg",
+    layout: "portal-dashboard",
     accent: "#3b5fe0",
     accentSoft: "#e2e8fb",
     industry: "Corporate / Enterprise Software",
@@ -226,7 +238,7 @@ export const CASES: CaseItem[] = [
       "A mobile platform connecting travelers with spare luggage space to people who need affordable shipping — secure, blockchain-backed, and built for real-time tracking.",
     tags: "App Design · Development",
     year: "2024",
-    image: "/cases/bagtote.svg",
+    layout: "logistics-app",
     accent: "#2247c9",
     accentSoft: "#dde6fb",
     industry: "Logistics / C2C Marketplace",

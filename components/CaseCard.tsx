@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "@/lib/gsap";
-import { asset } from "@/lib/asset";
+import CaseArtwork from "@/components/CaseArtwork";
 import type { CaseItem } from "@/data/cases";
 
 export default function CaseCard({
@@ -34,11 +34,13 @@ export default function CaseCard({
           scrollTrigger: { trigger: row, start: "top 80%", once: true },
         }
       );
+      // overscale keeps the exactly-sized artwork from revealing edges as it drifts
       gsap.fromTo(
         media.firstElementChild,
-        { yPercent: -7 },
+        { yPercent: -7, scale: 1.16 },
         {
           yPercent: 7,
+          scale: 1.16,
           ease: "none",
           scrollTrigger: { trigger: row, start: "top bottom", end: "bottom top", scrub: true },
         }
@@ -121,8 +123,7 @@ export default function CaseCard({
             ref={mediaRef}
             className="case-media aspect-[4/3] w-full will-change-transform"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={asset(item.image)} alt={`${item.title.join(" ")} — case visual`} loading="lazy" />
+            <CaseArtwork item={item} />
           </div>
         </Link>
       </div>

@@ -34,7 +34,8 @@ npm run build && npm start
 | `Header` | Fixed nav in `mix-blend-difference`, magnetic links |
 | `Hero` | Oversized split studio name, scattered sticker labels, rotating "play showreel" button |
 | `AboutServices` | "Just about" statement + flowing services wall in three typographic voices |
-| `SelectedCases` / `CaseCard` | Alternating case rows — clip reveals, scroll parallax, cursor-follow images |
+| `SelectedCases` / `CaseCard` | Alternating case rows — clip reveals, scroll parallax, cursor-follow artwork |
+| `CaseArtwork` | Dynamic per-case interface mockups (see below) |
 | `CaseDetail` (`app/work/[slug]`) | Per-case detail page — accent-themed Overview / Requirements / Solution / gallery |
 | `Awards` | Broken-word typographic composition + count-up stats grid |
 | `Footer` | Interactive poster — CTA, marquee, sun-face graphic, full-bleed closing wordmark |
@@ -42,11 +43,15 @@ npm run build && npm start
 | `MarqueeText` | Reusable infinite horizontal loop |
 | `Decor` | Starburst, sun face, squiggle, circular text and other hand-drawn marks |
 
-Case data (title, description, tech stack, accent color, etc.) lives in
-`data/cases.ts`. Thumbnails live in `public/cases/` and are produced by
-`node scripts/generate-case-art.mjs` — brand-matched abstract compositions
-keyed to each real project's own palette and a simple geometric echo of its
-UI (concentric rings, module grids, chat bubbles, …).
+Case data (title, description, tech stack, accent color, `layout`, etc.) lives
+in `data/cases.ts`. Each case's visual is rendered live by `CaseArtwork` — a
+data-driven React SVG component that recreates a stylized wireframe of the
+*real* product's interface (a therapist search, a module dashboard, a chat
+app, a storefront device trio, …) entirely in the site's ivory/ink palette,
+using the brand accent only for the load-bearing UI. No screenshots or raster
+assets: the same component powers the index thumbnail, the detail hero, and
+the zoomed gallery crops. Adding a case is just data — pick a `layout` and an
+`accent`.
 
 Reduced-motion preferences are respected for ambient animations, cursor
 effects are disabled on touch devices, and all type scales fluidly from

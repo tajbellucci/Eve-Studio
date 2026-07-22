@@ -3,9 +3,9 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { CASES, type CaseItem } from "@/data/cases";
-import { asset } from "@/lib/asset";
 import { useReveal } from "@/lib/useReveal";
 import { Asterisk } from "@/components/Decor";
+import CaseArtwork from "@/components/CaseArtwork";
 
 export default function CaseDetail({ item, next }: { item: CaseItem; next: CaseItem }) {
   const ref = useReveal<HTMLElement>();
@@ -74,15 +74,10 @@ export default function CaseDetail({ item, next }: { item: CaseItem; next: CaseI
         </div>
       </header>
 
-      {/* hero image */}
+      {/* hero artwork */}
       <div className="reveal-fade mt-14 px-[var(--gutter)] md:mt-20">
         <div className="case-media aspect-[16/9] w-full overflow-hidden rounded-sm">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset(item.image)}
-            alt={`${item.title.join(" ")} — case visual`}
-            style={{ transform: "scale(1)" }}
-          />
+          <CaseArtwork item={item} style={{ transform: "scale(1)" }} />
         </div>
       </div>
 
@@ -164,25 +159,13 @@ export default function CaseDetail({ item, next }: { item: CaseItem; next: CaseI
         </div>
       </section>
 
-      {/* mini gallery — same generated art, reframed */}
+      {/* mini gallery — the same live artwork, zoomed into two different regions */}
       <section className="mt-20 grid grid-cols-1 gap-4 px-[var(--gutter)] sm:grid-cols-2 md:mt-28">
         <div className="reveal-fade case-media aspect-[4/3] overflow-hidden rounded-sm">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset(item.image)}
-            alt=""
-            aria-hidden
-            style={{ transform: "scale(1.25)", objectPosition: "20% 30%" }}
-          />
+          <CaseArtwork item={item} style={{ transform: "scale(1.6) translate(-9%, -6%)" }} />
         </div>
         <div className="reveal-fade case-media aspect-[4/3] overflow-hidden rounded-sm">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset(item.image)}
-            alt=""
-            aria-hidden
-            style={{ transform: "scale(1.25)", objectPosition: "80% 70%" }}
-          />
+          <CaseArtwork item={item} style={{ transform: "scale(1.6) translate(9%, 7%)" }} />
         </div>
       </section>
 
